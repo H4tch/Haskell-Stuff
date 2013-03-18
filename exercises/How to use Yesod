@@ -1,0 +1,57 @@
+= FrameWorks =
+-----------------
+== Yesod ==
+==== Add a Page ====
+	 1.Modify Routes in "config/routes"
+		/userRequestedPage UserRequestedR [GET|POST|DELETE]
+	  
+	 2.Modify the Handlers, create a file within "Handler/"
+	   Add handler as an import statement within "Application.hs"
+	   Expose the module in the app's cabal file.
+		module Handler.UserRequestedPage (getUser...postUser..) import Import
+		getUserRequestedR :: Handler RepHtml  -- 'RepHtml' says to render the page to HTML
+		getUserRequestedR = do
+		defaultLayout $ do
+			aDomId <- lift newIdent
+			setTitle "Is this what you were looking for?"
+		$(widgetFile "userRequestedPage")	-- Looks for files in the "templates/" directory.
+						                 	-- Can have multiple files with difference extensions
+
+		postUserRequestedR :: 
+		..etc
+	  
+	 3.Create the widget file for the page and save it to "templates/".
+	 Html 	-> hamlet
+	 Css 	-> cassius or lucius
+	 Js 	-> julius
+
+==== DataBase ====
+  	1. Create a record with fields in "config/models".
+  	    Comment
+  	        article	ArticalId
+  	        user 	UserId
+  	        content	Textarea
+  	
+  	2. Create a Handler, see above at step 2 of "Add a Page"
+  	
+==== Forms ====
+	1. areq = Required element, aformM = Called Method, pure = field taken from page(not inputted by user.)
+	commentForm :: ArticleId -> Form Comment
+	commentForm articleId= renderDivs $ Comment
+		<$> pure articleId
+		<*> aformM (liftIO getCurrentTime)
+		<*> areq textField "Name" Nothing
+		<*> areq textareaField "Comment" Nothing
+
+
+-----------------
+
+== Snap ==
+
+
+-----------------
+
+== HAppstack ==
+
+
+-----------------

@@ -1,0 +1,15 @@
+<h1> Content
+$if null articles
+    <p> No content found.
+$else
+    -- Show the list of articles
+    <ul>
+        $forall Entity articleId article <- articles
+            <li> 
+                <a href=@{MediaR articleId} > #{articleTitle article}
+<hr>
+  <form method=post enctype=#{enctype}>
+    ^{articleWidget}
+    <div>
+        <input type=submit value="Post New Article">
+

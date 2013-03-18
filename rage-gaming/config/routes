@@ -1,0 +1,15 @@
+/static StaticR Static getStatic
+/auth   AuthR   Auth   getAuth
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+/ HomeR GET
+
+
+-- /event EventR GET POST		-- View all Events, or add a new one
+-- /#ContentYear/#ContentId ContentR GET POST	-- All [events,meadia,sermons] are accessed through their Year
+
+-- /media/#MediaId GET POST	-- View or edit a media post
+/media MediaR GET POST		-- View all Media, or add a new post
+/media/#ArticleId ArticleR GET POST  -- If root, it will overlap with static.

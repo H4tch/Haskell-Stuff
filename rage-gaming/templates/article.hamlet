@@ -1,0 +1,21 @@
+<h1> #{articleTitle article}
+<article> #{articleContent article}
+
+$if null comments
+    <h4> 0 Comments
+$else
+    <h4> Comments
+    -- Show the list of coments
+    <ul>
+        $forall Entity commentId comments <- comments
+            <li> 
+                <b> #{commentName comments}<b>
+                <em>#{commentPosted comments}</em>
+                <p> #{commentContent comments}
+
+<hr>
+  <form method=post enctype=#{enctype}>
+    ^{commentWidget}
+    <div>
+        <input type=submit value="Reply">
+

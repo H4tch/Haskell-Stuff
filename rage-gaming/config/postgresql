@@ -1,0 +1,7 @@
+
+user: fglgexaajokubg
+password: A2lpyfh8XKLbiyo6gfODIrGHz5
+host:ec2-54-243-238-240.compute-1.amazonaws.com
+port: 5432
+database: d99ndills0jpja
+sslmode: require
